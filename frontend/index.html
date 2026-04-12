@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Lancheria</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  🍔 Lancheria
+
+ <button class="btn-cardapio" onclick="irCardapio(); console.log('clicou')">
+  📋 Cardápio
+</button>
+</header>
+
+<!-- CARDÁPIO -->
+<div id="tela-cardapio">
+  <div id="produtos"></div>
+</div>
+
+<!-- BOTÃO CARRINHO -->
+<div class="carrinho-btn" onclick="abrirCarrinho()">
+  🛒 Ver Carrinho
+</div>
+
+<div class="overlay" id="overlay" onclick="fecharCarrinho()"></div>
+
+<!-- MODAL CARRINHO -->
+<div class="carrinho-modal" id="modal">
+  <div class="carrinho-header">
+    <h2>🛒 Seu Pedido</h2>
+    <button class="fechar" onclick="fecharCarrinho()">✖</button>
+  </div>
+
+  <ul id="carrinho"></ul>
+  <p class="total" id="total">Total: R$ 0</p>
+
+  <button class="finalizar" onclick="finalizarPedido()">
+    Finalizar Pedido
+  </button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
