@@ -263,3 +263,36 @@ header {
 #tela-cardapio {
   display: block;
 }
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #111;
+  color: white;
+}
+
+.topo h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  background: orange;
+  color: black;
+  padding: 8px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #ffb300;
+  transform: scale(1.05);
+}
