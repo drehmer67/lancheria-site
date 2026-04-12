@@ -1,27 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 80px 20px 20px 20px;
+  padding: 0;
   background: #111;
   color: white;
 }
 
-/* HEADER FIXO BONITO */
+/* HEADER FIXO SEM BUG */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   background: #111;
   padding: 15px 20px;
 
-  z-index: 1000;
+  z-index: 9999;
   border-bottom: 1px solid #222;
+}
+
+/* 🔥 ESSA É A PARTE MAIS IMPORTANTE */
+main {
+  padding: 90px 20px 20px 20px;
 }
 
 /* LINKS */
@@ -30,14 +39,14 @@ a {
   text-decoration: none;
 }
 
-/* TITULOS DAS CATEGORIAS */
+/* CATEGORIAS */
 h2 {
   margin-top: 30px;
   border-left: 5px solid orange;
   padding-left: 10px;
 }
 
-/* GRID DO CARDÁPIO */
+/* GRID CARDÁPIO */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -45,19 +54,14 @@ h2 {
   margin-top: 10px;
 }
 
-/* ITENS DO CARDÁPIO */
+/* ITEM */
 .item {
   background: #222;
   padding: 10px;
   border-radius: 10px;
-  transition: 0.2s;
 }
 
-.item:hover {
-  transform: scale(1.03);
-}
-
-/* BOTÕES (se tiver) */
+/* BOTÃO */
 button {
   background: orange;
   border: none;
@@ -67,14 +71,8 @@ button {
   font-weight: bold;
 }
 
-button:hover {
-  background: #ffb300;
-}
-
-/* CARRINHO (IMPORTANTE) */
+/* 🛒 CARRINHO */
 #carrinho {
-  position: relative;
-  z-index: 1;
   margin-top: 20px;
 }
 
@@ -84,4 +82,5 @@ button:hover {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 10px;
+  color: white;
 }
