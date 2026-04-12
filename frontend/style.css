@@ -180,3 +180,37 @@ button {
     font-size: 14px;
   }
 }
+#cardapio {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 15px 20px 15px;
+}
+
+/* categorias */
+#cardapio h2 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  border-left: 5px solid orange;
+  padding-left: 10px;
+}
+
+/* 🔥 2 colunas no PC */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* item */
+.item {
+  background: #222;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+/* celular */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

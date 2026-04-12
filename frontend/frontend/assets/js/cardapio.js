@@ -8,24 +8,27 @@ const produtos = [
 
 function carregarCardapio() {
   const container = document.getElementById("cardapio");
+
+  if (!container) return;
+
   container.innerHTML = "";
 
   const categorias = [...new Set(produtos.map(p => p.categoria))];
 
   categorias.forEach(cat => {
+    const produtosFiltrados = produtos.filter(p => p.categoria === cat);
+
     const bloco = document.createElement("section");
 
     bloco.innerHTML = `
       <h2>${cat}</h2>
       <div class="grid">
-        ${produtos
-          .filter(p => p.categoria === cat)
-          .map(p => `
-            <div class="item">
-              <h3>${p.nome}</h3>
-              <p>R$ ${p.preco.toFixed(2)}</p>
-            </div>
-          `).join("")}
+        ${produtosFiltrados.map(p => `
+          <div class="item">
+            <h3>${p.nome}</h3>
+            <p>R$ ${p.preco.toFixed(2)}</p>
+          </div>
+        `).join("")}
       </div>
     `;
 
