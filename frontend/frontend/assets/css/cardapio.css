@@ -1,36 +1,87 @@
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: 80px 20px 20px 20px;
   background: #111;
   color: white;
 }
 
+/* HEADER FIXO BONITO */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  background: #111;
+  padding: 15px 20px;
+
+  z-index: 1000;
+  border-bottom: 1px solid #222;
 }
 
+/* LINKS */
 a {
   color: white;
   text-decoration: none;
 }
 
+/* TITULOS DAS CATEGORIAS */
 h2 {
   margin-top: 30px;
   border-left: 5px solid orange;
   padding-left: 10px;
 }
 
+/* GRID DO CARDÁPIO */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
+  margin-top: 10px;
 }
 
+/* ITENS DO CARDÁPIO */
 .item {
   background: #222;
   padding: 10px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.item:hover {
+  transform: scale(1.03);
+}
+
+/* BOTÕES (se tiver) */
+button {
+  background: orange;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #ffb300;
+}
+
+/* CARRINHO (IMPORTANTE) */
+#carrinho {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+}
+
+/* ITEM DO CARRINHO */
+.item-carrinho {
+  background: #222;
+  padding: 10px;
+  margin-bottom: 10px;
   border-radius: 10px;
 }
