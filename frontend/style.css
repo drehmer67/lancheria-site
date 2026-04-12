@@ -5,187 +5,111 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f7f7f7;
-}
-
-/* HEADER */
-header {
-  background: linear-gradient(90deg, #ff3c00, #ff7a00);
+  font-family: Arial, sans-serif;
+  background: #111;
   color: white;
-  padding: 20px;
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
-/* PRODUTOS */
+/* HEADER FIXO PADRÃO */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 20px;
+  background: #111;
+  border-bottom: 1px solid #222;
+}
+
+/* LINKS */
+a {
+  color: white;
+  text-decoration: none;
+}
+
+/* BOTÕES GERAIS */
+button {
+  cursor: pointer;
+}
+
+/* TOP BAR (se usar menu) */
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* GRID CARDÁPIO */
 .produtos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 15px;
-  padding: 15px;
+  padding: 100px 15px 15px 15px; /* 🔥 resolve header por cima */
 }
 
+/* PRODUTO */
 .produto {
-  background: white;
+  background: #222;
   border-radius: 15px;
   padding: 10px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
   transition: 0.3s;
-  animation: aparecer 0.5s ease;
 }
 
 .produto:hover {
   transform: translateY(-5px);
 }
 
+/* IMAGEM */
 .produto img {
   width: 100%;
+  height: 140px;
+  object-fit: cover;
   border-radius: 12px;
 }
 
+/* TEXTO */
 .produto h3 {
   font-size: 16px;
   margin: 5px 0;
 }
 
 .produto p {
-  color: #666;
+  color: #ccc;
   font-size: 14px;
 }
 
-/* BOTÃO */
+/* BOTÃO PRODUTO */
 .produto button {
   margin-top: 8px;
   width: 100%;
   padding: 8px;
   border: none;
-  background: #ff3c00;
-  color: white;
+  background: orange;
+  color: black;
   border-radius: 8px;
   font-weight: bold;
-  cursor: pointer;
 }
 
-.produto button:hover {
-  background: #e63200;
-}
-
-/* BOTÃO FLUTUANTE */
+/* CARRINHO BOTÃO FLUTUANTE */
 .carrinho-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #ff3c00;
-  color: white;
+  background: orange;
+  color: black;
   padding: 15px 20px;
   border-radius: 50px;
   font-weight: bold;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  cursor: pointer;
-  animation: pulse 1.5s infinite;
+  z-index: 1001;
 }
 
-/* MODAL CARRINHO */
-.carrinho-modal {
-  position: fixed;
-  bottom: -100%;
-  left: 0;
-  width: 100%;
-  height: 70%;
-  background: white;
-  border-radius: 20px 20px 0 0;
-  padding: 20px;
-  transition: 0.4s;
-}
-
-.carrinho-modal.ativo {
-  bottom: 0;
-}
-
-/* LISTA */
-.carrinho-modal ul {
-  list-style: none;
-  margin-top: 10px;
-}
-
-.carrinho-modal li {
-  margin-bottom: 10px;
-}
-
-/* TOTAL */
-.total {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* FINALIZAR */
-.finalizar {
-  width: 100%;
-  padding: 12px;
-  background: green;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-/* ANIMAÇÕES */
-@keyframes aparecer {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes pulse {
-  0% {transform: scale(1);}
-  50% {transform: scale(1.1);}
-  100% {transform: scale(1);}
-}
-
-/* RESPONSIVO */
-@media (min-width: 768px) {
-  .carrinho-modal {
-    width: 400px;
-    right: 0;
-    left: auto;
-    height: 100%;
-    border-radius: 0;
-  }
-}
-.carrinho-modal button {
-  margin: 3px;
-  padding: 5px 8px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.carrinho-modal button:hover {
-  opacity: 0.8;
-}
-.carrinho-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.fechar {
-  background: red;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.fechar:hover {
-  background: darkred;
-}
-/* OVERLAY ESCURO */
+/* OVERLAY */
 .overlay {
   position: fixed;
   top: 0;
@@ -196,7 +120,6 @@ header {
   opacity: 0;
   pointer-events: none;
   transition: 0.3s;
-  backdrop-filter: blur(3px);
 }
 
 .overlay.ativo {
@@ -204,97 +127,48 @@ header {
   pointer-events: all;
 }
 
-/* MODAL MELHORADO */
+/* MODAL CARRINHO */
 .carrinho-modal {
-  transform: translateY(100%);
-  transition: transform 0.4s ease;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+
+  background: #111;
+  transform: translateX(100%);
+  transition: 0.3s;
+
+  padding: 20px;
 }
 
 .carrinho-modal.ativo {
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
-/* DESKTOP (lado direito) */
-@media (min-width: 768px) {
-  .carrinho-modal {
-    transform: translateX(100%);
-  }
-
-  .carrinho-modal.ativo {
-    transform: translateX(0);
-  }
-}
-.produto img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: 0.3s;
+/* ITEM CARRINHO */
+.item-carrinho {
+  background: #222;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
-.produto:hover img {
-  transform: scale(1.05);
-}
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.btn-cardapio {
-  position: absolute;
-  right: 20px;
-  top: 15px;
-  background: white;
-  color: #ff3c00;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 20px;
+/* TOTAL */
+.total {
+  margin-top: 10px;
   font-weight: bold;
-  cursor: pointer;
 }
 
-.btn-cardapio:hover {
-  opacity: 0.8;
-}
-#tela-cardapio {
-  transition: 0.3s;
-}
-#tela-cardapio {
-  display: block;
-}
-.topo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background: #111;
+/* BOTÃO FINALIZAR */
+.finalizar {
+  width: 100%;
+  padding: 12px;
+  background: green;
   color: white;
-}
-
-.topo h1 {
-  margin: 0;
-  font-size: 22px;
-}
-
-nav {
-  display: flex;
-  gap: 10px;
-}
-
-.btn {
-  background: orange;
-  color: black;
-  padding: 8px 15px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.btn:hover {
-  background: #ffb300;
-  transform: scale(1.05);
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
 }

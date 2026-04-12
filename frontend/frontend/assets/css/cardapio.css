@@ -10,7 +10,7 @@ body {
   color: white;
 }
 
-/* HEADER FIXO SEM BUG */
+/* HEADER FIXO (SEM BUG) */
 header {
   position: fixed;
   top: 0;
@@ -28,25 +28,25 @@ header {
   border-bottom: 1px solid #222;
 }
 
-/* 🔥 ESSA É A PARTE MAIS IMPORTANTE */
-main {
-  padding: 90px 20px 20px 20px;
-}
-
 /* LINKS */
 a {
   color: white;
   text-decoration: none;
 }
 
-/* CATEGORIAS */
+/* 🔥 ESPAÇO GERAL DO CONTEÚDO (CORREÇÃO PRINCIPAL) */
+#cardapio {
+  padding: 100px 20px 20px 20px;
+}
+
+/* TITULOS DAS CATEGORIAS */
 h2 {
   margin-top: 30px;
   border-left: 5px solid orange;
   padding-left: 10px;
 }
 
-/* GRID CARDÁPIO */
+/* GRID DO CARDÁPIO */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -54,11 +54,16 @@ h2 {
   margin-top: 10px;
 }
 
-/* ITEM */
+/* ITENS */
 .item {
   background: #222;
   padding: 10px;
   border-radius: 10px;
+  transition: 0.2s;
+}
+
+.item:hover {
+  transform: scale(1.03);
 }
 
 /* BOTÃO */
@@ -71,7 +76,11 @@ button {
   font-weight: bold;
 }
 
-/* 🛒 CARRINHO */
+button:hover {
+  background: #ffb300;
+}
+
+/* CARRINHO */
 #carrinho {
   margin-top: 20px;
 }
