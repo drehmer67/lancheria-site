@@ -256,3 +256,76 @@ button:hover {
 #tela-cardapio {
   padding-bottom: 80px;
 }
+/* 🔥 CATEGORIAS */
+.categorias {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px;
+  margin-top: 70px;
+}
+
+.categorias::-webkit-scrollbar {
+  display: none;
+}
+
+.categoria-btn {
+  background: #1a1a1a;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.categoria-btn.ativa {
+  background: linear-gradient(45deg, orange, #ff5e00);
+  color: black;
+}
+/* 🔥 CATEGORIAS iFOOD */
+.categorias {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 15px 10px;
+  margin-top: 70px;
+}
+
+.categorias::-webkit-scrollbar {
+  display: none;
+}
+
+.categoria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.categoria img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #222;
+  padding: 10px;
+  object-fit: cover;
+  border: 2px solid transparent;
+}
+
+.categoria span {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.categoria.ativa img {
+  border: 2px solid orange;
+  transform: scale(1.1);
+}
+
+.categoria.ativa span {
+  color: orange;
+}

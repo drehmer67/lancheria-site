@@ -86,16 +86,17 @@ const modal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
 
 // RENDER PRODUTOS
-const categorias = ["Burgers", "Porções", "Bebidas", "Combos"];
+function renderProdutos() {
+  divProdutos.style.opacity = 0;
 
-categorias.forEach(cat => {
-  const titulo = document.createElement("h2");
-  titulo.innerText = cat;
-  divProdutos.appendChild(titulo);
+  setTimeout(() => {
+    divProdutos.innerHTML = "";
 
-  produtos
-    .filter(p => p.categoria === cat)
-    .forEach((produto, index) => {
+    const filtrados = categoriaAtiva === "Todos"
+      ? produtos
+      : produtos.filter(p => p.categoria === categoriaAtiva);
+
+    filtrados.forEach((produto) => {
       const i = produtos.indexOf(produto);
 
       const div = document.createElement("div");
@@ -110,7 +111,10 @@ categorias.forEach(cat => {
 
       divProdutos.appendChild(div);
     });
-});
+
+    divProdutos.style.opacity = 1;
+  }, 150);
+}
 
 // ABRIR CARRINHO
 function abrirCarrinho() {
