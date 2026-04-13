@@ -1,64 +1,66 @@
-const lista = document.getElementById("lista");
-
-let filtroAtual = "Todos";
-
-function corStatus(status) {
-  if (status === "Pendente") return "pendente";
-  if (status === "Preparando") return "preparando";
-  if (status === "Pronto") return "pronto";
-}
-
-// 🔥 FILTRO
-function filtrar(status) {
-  filtroAtual = status;
-  carregarPedidos();
-}
+const pendenteDiv = document.getElementById("pendente");
+const preparandoDiv = document.getElementById("preparando");
+const prontoDiv = document.getElementById("pronto");
 
 // 🔥 CARREGAR PEDIDOS
 async function carregarPedidos() {
-  const res = await fetch("http://127.0.0.1:3000/pedidos");
-  const pedidos = await res.json();
+  try {
+    const res = await fetch("http://127.0.0.1:3000/pedidos");
+    const pedidos = await res.json();
 
-  lista.innerHTML = "";
+    pendenteDiv.innerHTML = "";
+    preparandoDiv.innerHTML = "";
+    prontoDiv.innerHTML = "";
 
-  pedidos
-    .filter(p => filtroAtual === "Todos" || p.status === filtroAtual)
-    .forEach((pedido, i) => {
+    pedidos.forEach((pedido, i) => {
 
-      const div = document.createElement("div");
-      div.className = "card";
+      const card = document.createElement("div");
+      card.className = "card";
 
       let itens = "";
       pedido.itens.forEach(item => {
         itens += `<li>${item.nome} x${item.qtd}</li>`;
       });
 
-      div.innerHTML = `
+      card.innerHTML = `
         <h3>Pedido #${i + 1}</h3>
-
         <ul>${itens}</ul>
-
-        <p>Total: <strong>R$ ${pedido.total}</strong></p>
-
-        <p>Status:
-          <span class="status ${corStatus(pedido.status)}">
-            ${pedido.status}
-          </span>
-        </p>
-
-        <button class="preparando-btn"
-          onclick="mudarStatus(${i}, 'Preparando')">
-          Preparando
-        </button>
-
-        <button class="pronto-btn"
-          onclick="mudarStatus(${i}, 'Pronto')">
-          Pronto
-        </button>
+        <p><strong>R$ ${pedido.total}</strong></p>
       `;
 
-      lista.appendChild(div);
+      // BOTÕES
+      if (pedido.status === "Pendente") {
+        card.innerHTML += `
+          <button class="preparar" onclick="mudarStatus(${i}, 'Preparando')">
+            Iniciar
+          </button>
+        `;
+        pendenteDiv.appendChild(card);
+      }
+
+      else if (pedido.status === "Preparando") {
+        card.innerHTML += `
+          <button class="pronto" onclick="mudarStatus(${i}, 'Pronto')">
+            Finalizar
+          </button>
+        `;
+        preparandoDiv.appendChild(card);
+      }
+
+      else if (pedido.status === "Pronto") {
+        card.innerHTML += `
+          <button class="remover" onclick="remover(${i})">
+            Remover
+          </button>
+        `;
+        prontoDiv.appendChild(card);
+      }
+
     });
+
+  } catch (err) {
+    console.log("Erro:", err);
+  }
 }
 
 // 🔥 MUDAR STATUS
@@ -69,8 +71,14 @@ function mudarStatus(index, status) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ status })
-  })
-  .then(() => carregarPedidos());
+  }).then(() => carregarPedidos());
+}
+
+// 🔥 REMOVER PEDIDO
+function remover(index) {
+  fetch(`http://127.0.0.1:3000/pedido/${index}`, {
+    method: "DELETE"
+  }).then(() => carregarPedidos());
 }
 
 // 🔄 AUTO ATUALIZA

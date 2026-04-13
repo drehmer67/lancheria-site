@@ -1,62 +1,51 @@
 body {
+  margin: 0;
   font-family: Arial;
   background: #111;
   color: white;
-  margin: 0;
 }
 
 header {
-  background: #000;
-  padding: 15px;
   text-align: center;
-  font-size: 20px;
+  padding: 15px;
+  background: black;
   border-bottom: 1px solid #222;
 }
 
-.filtros {
+.kanban {
   display: flex;
   gap: 10px;
   padding: 10px;
-  justify-content: center;
 }
 
-.filtros button {
-  padding: 8px 12px;
-  border: none;
-  background: orange;
-  border-radius: 6px;
-  cursor: pointer;
+.coluna {
+  flex: 1;
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 80vh;
 }
 
-#lista {
-  padding: 15px;
+.coluna h2 {
+  text-align: center;
 }
 
 .card {
   background: #222;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
-
-.status {
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-.pendente { background: red; }
-.preparando { background: orange; }
-.pronto { background: green; }
 
 button {
-  margin-top: 10px;
-  margin-right: 5px;
-  padding: 6px 10px;
+  margin-top: 5px;
+  width: 100%;
+  padding: 6px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
 }
 
-.preparando-btn { background: orange; }
-.pronto-btn { background: green; color: white; }
+.preparar { background: orange; }
+.pronto { background: green; color: white; }
+.remover { background: red; color: white; }

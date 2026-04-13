@@ -2,23 +2,31 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Painel Admin</title>
+  <title>Painel Cozinha</title>
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-<header>
-  📋 Painel de Pedidos
-</header>
+<header>👨‍🍳 Painel da Cozinha</header>
 
-<div class="filtros">
-  <button onclick="filtrar('Todos')">Todos</button>
-  <button onclick="filtrar('Pendente')">Pendente</button>
-  <button onclick="filtrar('Preparando')">Preparando</button>
-  <button onclick="filtrar('Pronto')">Pronto</button>
+<div class="kanban">
+
+  <div class="coluna">
+    <h2>🟥 Pendente</h2>
+    <div id="pendente"></div>
+  </div>
+
+  <div class="coluna">
+    <h2>🟧 Preparando</h2>
+    <div id="preparando"></div>
+  </div>
+
+  <div class="coluna">
+    <h2>🟩 Pronto</h2>
+    <div id="pronto"></div>
+  </div>
+
 </div>
-
-<div id="lista"></div>
 
 <script src="admin.js"></script>
 </body>
