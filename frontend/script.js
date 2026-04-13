@@ -168,3 +168,19 @@ function finalizarPedido() {
 
 // ================= INICIAL =================
 renderProdutos();
+
+// ================= TELAS =================
+const telaCardapio = document.getElementById("tela-cardapio");
+const telaCarrinho = document.getElementById("tela-carrinho");
+
+// MOSTRAR CARDÁPIO
+function mostrarCardapio() {
+  telaCardapio.classList.remove("hidden");
+  telaCarrinho.classList.add("hidden");
+}
+
+// MOSTRAR CARRINHO
+function mostrarCarrinho() {
+  telaCardapio.classList.add("hidden");
+  telaCarrinho.classList.remove("hidden");
+}
