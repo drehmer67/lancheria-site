@@ -11,23 +11,31 @@
   🍔 Lancheria
 </header>
 
-<!-- CARDÁPIO -->
+<!-- 🍔 CARDÁPIO -->
 <div id="tela-cardapio">
-  <div class="categorias" id="categorias"></div>
+
+  <!-- 🔥 CATEGORIAS -->
+  <div id="categorias"></div>
+
+  <!-- PRODUTOS -->
   <div id="produtos"></div>
+
 </div>
 
-<!-- CARRINHO -->
+<!-- 🛒 CARRINHO -->
 <div id="tela-carrinho" class="hidden">
   <h2 style="padding:15px;">🛒 Seu Pedido</h2>
   <ul id="carrinho"></ul>
   <p class="total" id="total">Total: R$ 0</p>
-  <button class="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+  <button class="finalizar" onclick="finalizarPedido()">
+    Finalizar Pedido
+  </button>
 </div>
 
 <!-- 🔥 BARRA INFERIOR -->
 <div class="bottom-bar">
   <button onclick="mostrarCardapio()">🍔<br>Cardápio</button>
+
   <button onclick="mostrarCarrinho()">
     🛒<br>Carrinho <span id="badge">0</span>
   </button>
