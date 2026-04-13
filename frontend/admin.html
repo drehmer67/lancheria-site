@@ -1,84 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Painel Admin</title>
-
-<style>
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f5f5f5;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-}
-
-.container {
-  display: grid;
-  gap: 15px;
-}
-
-/* CARD */
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* STATUS */
-.status {
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 6px;
-}
-
-.pendente {
-  background: orange;
-  color: white;
-}
-
-.preparando {
-  background: blue;
-  color: white;
-}
-
-.pronto {
-  background: green;
-  color: white;
-}
-
-/* BOTÕES */
-button {
-  margin: 5px 5px 0 0;
-  padding: 6px 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.preparando-btn {
-  background: blue;
-  color: white;
-}
-
-.pronto-btn {
-  background: green;
-  color: white;
-}
-
-</style>
+  <meta charset="UTF-8">
+  <title>Painel Admin</title>
+  <link rel="stylesheet" href="admin.css">
 </head>
-
 <body>
 
-<h1>📋 Painel de Pedidos</h1>
+<header>
+  📋 Painel de Pedidos
+</header>
 
-<div class="container" id="lista"></div>
+<div class="filtros">
+  <button onclick="filtrar('Todos')">Todos</button>
+  <button onclick="filtrar('Pendente')">Pendente</button>
+  <button onclick="filtrar('Preparando')">Preparando</button>
+  <button onclick="filtrar('Pronto')">Pronto</button>
+</div>
+
+<div id="lista"></div>
 
 <script src="admin.js"></script>
-
 </body>
 </html>
