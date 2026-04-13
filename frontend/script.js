@@ -84,7 +84,6 @@ const ulCarrinho = document.getElementById("carrinho");
 const totalEl = document.getElementById("total");
 const modal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
-const telaCardapio = document.getElementById("tela-cardapio");
 
 // RENDER PRODUTOS
 const categorias = ["Burgers", "Porções", "Bebidas", "Combos"];
@@ -239,3 +238,32 @@ function finalizarPedido() {
   atualizarCarrinho();
   fecharCarrinho();
 }
+const telaCardapio = document.getElementById("tela-cardapio");
+const telaCarrinho = document.getElementById("tela-carrinho");
+const badge = document.getElementById("badge");
+
+// MOSTRAR CARDÁPIO
+function mostrarCardapio() {
+  telaCardapio.classList.remove("hidden");
+  telaCarrinho.classList.add("hidden");
+}
+
+// MOSTRAR CARRINHO
+function mostrarCarrinho() {
+  telaCardapio.classList.add("hidden");
+  telaCarrinho.classList.remove("hidden");
+}
+
+// ATUALIZAR BADGE
+function atualizarBadge() {
+  let total = 0;
+  carrinho.forEach(item => total += item.qtd);
+  badge.innerText = total;
+}
+
+// CHAMA NO FINAL DO atualizarCarrinho
+const oldAtualizar = atualizarCarrinho;
+atualizarCarrinho = function() {
+  oldAtualizar();
+  atualizarBadge();
+};

@@ -8,39 +8,27 @@
 <body>
 
 <header>
- <header class="topo">
-  <h1>🍔 Lancheria</h1>
-
-  <nav>
-    <a href="cardapio.html" class="btn">Cardápio</a>
-  </nav>
+  🍔 Lancheria
 </header>
 
 <!-- CARDÁPIO -->
- 
 <div id="tela-cardapio">
   <div id="produtos"></div>
 </div>
 
-<!-- BOTÃO CARRINHO -->
-<div class="carrinho-btn" onclick="abrirCarrinho()">
-  🛒 Ver Carrinho
-</div>
-
-<div class="overlay" id="overlay" onclick="fecharCarrinho()"></div>
-
-<!-- MODAL CARRINHO -->
-<div class="carrinho-modal" id="modal">
-  <div class="carrinho-header">
-    <h2>🛒 Seu Pedido</h2>
-    <button class="fechar" onclick="fecharCarrinho()">✖</button>
-  </div>
-
+<!-- CARRINHO -->
+<div id="tela-carrinho" class="hidden">
+  <h2 style="padding:15px;">🛒 Seu Pedido</h2>
   <ul id="carrinho"></ul>
   <p class="total" id="total">Total: R$ 0</p>
+  <button class="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+</div>
 
-  <button class="finalizar" onclick="finalizarPedido()">
-    Finalizar Pedido
+<!-- 🔥 BARRA INFERIOR -->
+<div class="bottom-bar">
+  <button onclick="mostrarCardapio()">🍔<br>Cardápio</button>
+  <button onclick="mostrarCarrinho()">
+    🛒<br>Carrinho <span id="badge">0</span>
   </button>
 </div>
 
