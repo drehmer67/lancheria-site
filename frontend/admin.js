@@ -5,7 +5,7 @@ const prontoDiv = document.getElementById("pronto");
 // 🔥 CARREGAR PEDIDOS
 async function carregarPedidos() {
   try {
-    const res = await fetch("http://127.0.0.1:3000/pedidos");
+    const res = await fetch("https://lancheria-backend.onrender.com/pedidos");
     const pedidos = await res.json();
 
     pendenteDiv.innerHTML = "";
@@ -65,7 +65,7 @@ async function carregarPedidos() {
 
 // 🔥 MUDAR STATUS
 function mudarStatus(index, status) {
-  fetch(`http://127.0.0.1:3000/pedido/${index}`, {
+  fetch(`https://lancheria-backend.onrender.com/pedido/${index}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -76,7 +76,7 @@ function mudarStatus(index, status) {
 
 // 🔥 REMOVER PEDIDO
 function remover(index) {
-  fetch(`http://127.0.0.1:3000/pedido/${index}`, {
+  fetch(`https://lancheria-backend.onrender.com/pedido/${index}`, {
     method: "DELETE"
   }).then(() => carregarPedidos());
 }

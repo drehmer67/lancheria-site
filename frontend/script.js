@@ -140,7 +140,7 @@ function finalizarPedido() {
 
   const total = carrinho.reduce((t, i) => t + i.preco * i.qtd, 0);
 
-  fetch("http://127.0.0.1:3000/pedido", {
+  fetch("https://lancheria-backend.onrender.com/pedido", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
